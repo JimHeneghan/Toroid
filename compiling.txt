@@ -1,0 +1,20 @@
+Hi Jim,
+
+The problem is that your program need a function that is in libgcc.
+
+Use locate to find libgcc (I used libgcc.a which is statically linked but a dynamically linked .so file should do as well):
+locate libgcc
+
+
+Copy the libgcc.a or libgcc.so file to your current directory.
+
+compile with:
+gcc -fPIC -c *.c
+
+link with:
+ ld -shared -soname doWork.so.1 -o doWork.so.1.0 *.o -L[XXXXXXX] -lgcc
+
+where [XXXXXXX] is the path to your current directory which you can find using the pwd command.
+
+Hope this help,
+drd
