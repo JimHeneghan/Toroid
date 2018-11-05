@@ -28,23 +28,23 @@ a = (0.5)
 GammaX = 2*math.pi/(a*math.sqrt(3))
 GammaJ = 2*GammaX/math.sqrt(3)
 
-k[0] = np.array([0.0, math.pi/(math.sqrt(3)*a), 0.0, 50000, 0.0])
-step = (2*GammaX)/72
+k[0] = np.array([GammaX/2, GammaX/math.sqrt(3) , 0.0, 150000, 0.0])
+step = (4*GammaX)/72
 
-for i in range (1, 37):
+for i in range (1, 72):
     k[i][0] = k[i-1][0] + step
     k[i][1] = k[i-1][1] 
     k[i][2] = k[i-1][2]
     k[i][3] = k[i-1][3]
     k[i][4] = k[i-1][4] + 1.0
 
-k[37] = np.array([-GammaX, math.pi/(math.sqrt(3)*a), 0.0, 50000, 37.0])
-for i in range (38, 72):
-    k[i][0] = k[i-1][0] + step
-    k[i][1] = k[i-1][1] 
-    k[i][2] = k[i-1][2]
-    k[i][3] = k[i-1][3]
-    k[i][4] = k[i-1][4] + 1.0
+#k[37] = np.array([-GammaX, math.pi/(math.sqrt(3)*a), 0.0, 50000, 37.0])
+#for i in range (38, 72):
+#    k[i][0] = k[i-1][0] + step
+#    k[i][1] = k[i-1][1] 
+#    k[i][2] = k[i-1][2]
+#    k[i][3] = k[i-1][3]
+#    k[i][4] = k[i-1][4] + 1.0
 
 for i in range (48, 72):
     p = "p%d" %i
@@ -55,4 +55,3 @@ for i in range (48, 72):
     p.start()
 #    p.join()
 print "Done"
-
